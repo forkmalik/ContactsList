@@ -21,10 +21,13 @@ export default {
 
 <style lang="scss">
 #app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 1050px;
+  
 }
 
 </style>

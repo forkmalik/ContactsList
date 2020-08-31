@@ -1,5 +1,6 @@
 <template>
   <div class="contact-list">
+    <button class="contact-list__btn add-btn">Add contact</button>
     <contacts-item v-for="contact in contacts" :key="contact.id" :contact="contact"></contacts-item>
   </div>
 </template>
@@ -21,9 +22,24 @@ export default {
         { id: 7, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
         { id: 8, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
         { id: 9, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 10, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 11, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 12, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
+        {
+          id: 10,
+          name: "Ivan Ivanov",
+          phone: "556984",
+          email: "ivan@mail.com",
+        },
+        {
+          id: 11,
+          name: "Ivan Ivanov",
+          phone: "556984",
+          email: "ivan@mail.com",
+        },
+        {
+          id: 12,
+          name: "Ivan Ivanov",
+          phone: "556984",
+          email: "ivan@mail.com",
+        },
       ],
     };
   },
@@ -35,10 +51,20 @@ export default {
 
 <style lang="scss">
 .contact-list {
-  height: 10em;
-  max-width: 1050px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  width: 100%;
+  max-width: 1500px;
+  margin-left: 5px;
+  .contact-list__btn{
+    border: none;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #f05d22;
+    color: white;
+  }
+  .add-btn {
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+  }
 }
 </style>
