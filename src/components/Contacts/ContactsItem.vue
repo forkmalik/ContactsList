@@ -2,15 +2,26 @@
   <ol class="contact-list__item">
     <li>
       <a>{{ contact.name }}</a>
-      <button class="contact-list__btn">X</button>
+      <button @click="deleteContact(contact.id)" class="contact-list__btn">X</button>
     </li>
   </ol>
 </template>
 
 <script>
+
+
 export default {
   name: "contacts-item",
   props: ["contact"],
+  methods: {
+    deleteContact (index) {
+      if(index == this.contact.id){
+        
+        delete this.contact.name
+        
+      }
+    }
+  }
 };
 </script>
 
