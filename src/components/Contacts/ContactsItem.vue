@@ -2,26 +2,15 @@
   <ol class="contact-list__item">
     <li>
       <a>{{ contact.name }}</a>
-      <button @click="deleteContact(contact.id)" class="contact-list__btn">X</button>
+      <button @click="remove(index)" class="contact-list__btn">X</button>
     </li>
   </ol>
 </template>
 
 <script>
-
-
 export default {
   name: "contacts-item",
-  props: ["contact"],
-  methods: {
-    deleteContact (index) {
-      if(index == this.contact.id){
-        
-        delete this.contact.name
-        
-      }
-    }
-  }
+  props: ["contact", "remove"],
 };
 </script>
 
@@ -51,7 +40,7 @@ export default {
         cursor: pointer;
       }
     }
-    
+
     &:hover {
       border-right: 10px solid green;
       cursor: pointer;

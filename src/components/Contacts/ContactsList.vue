@@ -2,7 +2,7 @@
   <div class="contact-list">
     <input type="text" v-model="newName" />
     <button v-on:click="addNewContact" class="contact-list__btn add-btn">Add contact</button>
-    <contacts-item v-for="contact in contacts" :key="contact.id" :contact="contact"></contacts-item>
+    <contacts-item v-for="contact in contacts" :key="contact.id" :contact="contact" :remove="removeContact"></contacts-item>
   </div>
 </template>
 
@@ -51,10 +51,16 @@ export default {
   methods: {
     addNewContact: function () {
       this.$data.contacts.push({
-        id: this.$data.contacts.lenth - 1 + 1,
+        id: this.$data.contacts.length - 1 + 1,
         name: this.newName,
       });
       this.newName = "";
+    },
+    removeContact: function (index) {
+      if (index == this.$data.contacts.id) {
+        this.$data.contacts.splice(index, 1);
+        
+      }
     }
   },
 };
