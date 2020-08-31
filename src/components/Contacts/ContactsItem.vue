@@ -34,7 +34,7 @@ export default {
     transition: 0.3s all linear;
     button {
       position: absolute;
-      right: 10px;
+      right: 20px;
       top: 0;
       &:hover {
         cursor: pointer;
@@ -42,7 +42,8 @@ export default {
     }
     
     &:hover {
-      border-right: 10px solid #f05d22;
+      border-right: 10px solid green;
+      cursor: pointer;
     }
   }
 }

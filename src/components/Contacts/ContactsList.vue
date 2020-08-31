@@ -52,7 +52,7 @@ export default {
 <style lang="scss">
 .contact-list {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1800;
   margin-left: 5px;
   .contact-list__btn{
     border: none;
