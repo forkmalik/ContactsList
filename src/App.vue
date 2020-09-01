@@ -6,7 +6,6 @@
 
 <script>
 import ContactsList from "./components/Contacts/ContactsList"
-
 export default {
   name: 'app',
   data () {

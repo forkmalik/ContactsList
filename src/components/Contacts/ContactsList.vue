@@ -2,47 +2,25 @@
   <div class="contact-list">
     <input type="text" v-model="newName" />
     <button v-on:click="addNewContact" class="contact-list__btn add-btn">Add contact</button>
-    <contacts-item v-for="contact in contacts" :key="contact.id" :contact="contact" :remove="removeContact"></contacts-item>
+    <contacts-item
+      v-for="contact in store.contacts"
+      :key="contact.id"
+      :contact="contact"
+      :remove="removeContact"
+    ></contacts-item>
   </div>
 </template>
 
 <script>
 import ContactsItem from "./ContactsItem";
+import store from "../store/store";
+
 export default {
   name: "contacts-list",
   data() {
     return {
       newName: "",
-      contacts: [
-        { id: 0, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 1, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 2, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 3, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 4, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 5, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 6, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 7, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 8, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        { id: 9, name: "Ivan Ivanov", phone: "556984", email: "ivan@mail.com" },
-        {
-          id: 10,
-          name: "Ivan Ivanov",
-          phone: "556984",
-          email: "ivan@mail.com",
-        },
-        {
-          id: 11,
-          name: "Ivan Ivanov",
-          phone: "556984",
-          email: "ivan@mail.com",
-        },
-        {
-          id: 12,
-          name: "Ivan Ivanov",
-          phone: "556984",
-          email: "ivan@mail.com",
-        },
-      ],
+      store: store,
     };
   },
   components: {
@@ -50,18 +28,38 @@ export default {
   },
   methods: {
     addNewContact: function () {
-      this.$data.contacts.push({
-        id: this.$data.contacts.length - 1 + 1,
-        name: this.newName,
-      });
+      if (this.newName == "" || this.newName == undefined) {
+        alert("Nothing to add");
+      } else {
+        let index = this.$data.store.contacts.length - 1 + 1;
+        let newContact = {
+          id: index,
+          name: this.newName,
+          phone: "",
+          email: "",
+        };
+        let arr = this.$data.store.contacts;
+        arr.splice(index, 1, newContact);
+      }
+
       this.newName = "";
     },
     removeContact: function (index) {
-      if (index == this.$data.contacts.id) {
-        this.$data.contacts.splice(index, 1);
-        
+      let arr = this.$data.store.contacts;
+      if (index == arr[index].id) {
+        arr.splice(index, 1);
       }
-    }
+      else{
+        alert("Can't be removed")
+      }
+      arr.forEach(element => {
+        if(element.id > index) {
+          element.id--
+        }
+        
+      });
+      
+    },
   },
 };
 </script>
