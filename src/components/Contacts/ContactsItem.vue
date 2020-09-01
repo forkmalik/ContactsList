@@ -1,7 +1,7 @@
 <template>
   <ol class="contact-list__item">
     <li>
-      <a>{{ contact.name }}</a>
+      <router-link>{{ contact.name }}</router-link>
       <button @click="remove(index)" class="contact-list__btn">X</button>
     </li>
   </ol>
