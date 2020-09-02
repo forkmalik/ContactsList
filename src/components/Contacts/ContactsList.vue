@@ -44,7 +44,7 @@ export default {
 
       this.newName = "";
     },
-    removeContact: function (index) {
+    removeContact: function (index, close) {
       let arr = this.$data.store.contacts;
       if (index == arr[index].id) {
         arr.splice(index, 1);
@@ -56,9 +56,7 @@ export default {
         if(element.id > index) {
           element.id--
         }
-        
       });
-      
     },
   },
 };

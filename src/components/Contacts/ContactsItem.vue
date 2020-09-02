@@ -3,16 +3,36 @@
     <li>
       <router-link>
         <a>{{ contact.name }}</a>
-        </router-link>
-      <button @click="remove(contact.id)" class="contact-list__btn">X</button>
+      </router-link>
+      <button @click="showModal" class="contact-list__btn">X</button>
     </li>
+    <modal class="contact-list__modal" :visibility="isModalVisible" :close="closeModal" :remove="remove" :index="contact.id" v-show="isModalVisible"></modal>
   </ol>
 </template>
 
 <script>
+import Modal from "../Modal/Modal"
+
 export default {
   name: "contacts-item",
+  components: {
+    Modal,
+  },
+  data () {
+    return {
+      isModalVisible: false
+    };
+  },
   props: ["contact", "remove"],
+
+  methods: {
+    showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal () {
+        this.isModalVisible = false
+    },
+  }
 };
 </script>
 
@@ -47,6 +67,9 @@ export default {
       border-right: 10px solid green;
       cursor: pointer;
     }
+  }
+ .contact-list__modal {
+   margin: auto;
   }
 }
 </style>
