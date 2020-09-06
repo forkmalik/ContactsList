@@ -1,38 +1,45 @@
 <template>
   <ol class="contact-list__item">
-    <li>
-      <router-link>
+    <router-link to="/contact-info">
+      <li>
         <a>{{ contact.name }}</a>
-      </router-link>
-      <button @click="showModal" class="contact-list__btn">X</button>
-    </li>
-    <modal class="contact-list__modal" :visibility="isModalVisible" :close="closeModal" :remove="remove" :index="contact.id" v-show="isModalVisible"></modal>
+        <button @click="showModal" class="contact-list__btn">X</button>
+      </li>
+    </router-link>
+    <modal
+      class="contact-list__modal"
+      :visibility="isModalVisible"
+      :close="closeModal"
+      :remove="remove"
+      :index="contact.id"
+      v-show="isModalVisible"
+    ></modal>
   </ol>
 </template>
 
 <script>
-import Modal from "../Modal/Modal"
+import Modal from "../Modal/Modal";
 
 export default {
   name: "contacts-item",
   components: {
     Modal,
   },
-  data () {
+  data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
     };
   },
   props: ["contact", "remove"],
 
   methods: {
     showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal () {
-        this.isModalVisible = false
+      this.isModalVisible = true;
     },
-  }
+    closeModal() {
+      this.isModalVisible = false;
+    },
+  },
 };
 </script>
 
@@ -68,8 +75,12 @@ export default {
       cursor: pointer;
     }
   }
- .contact-list__modal {
-   margin: auto;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  .contact-list__modal {
+    margin: auto;
   }
 }
 </style>

@@ -1,20 +1,16 @@
 <template>
   <div id="app">
-    <contacts-list></contacts-list>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import ContactsList from "./components/Contacts/ContactsList"
 export default {
   name: 'app',
   data () {
     return {
     } 
   },
-  components: {
-    ContactsList
-  }
 }
 </script>
 
