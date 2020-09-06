@@ -1,11 +1,12 @@
 <template>
   <ol class="contact-list__item">
-    <router-link to="/contact-info">
-      <li>
+    <li>
+      <router-link to="/contact-info">
         <a>{{ contact.name }}</a>
-        <button @click="showModal" class="contact-list__btn">X</button>
-      </li>
-    </router-link>
+      </router-link>
+      <button @click="showModal" class="contact-list__btn">X</button>
+    </li>
+
     <modal
       class="contact-list__modal"
       :visibility="isModalVisible"
