@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: "/", component: ContactsList },
-  { path: "/contact-info", component: ContactInfo }
+  { path: "/contact-info", name: 'contact-info', component: ContactInfo, props: true }
   //{path: '*', component: ContactsList}
 ];
 

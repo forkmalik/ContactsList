@@ -35,8 +35,6 @@ export default {
         let newContact = {
           id: index,
           name: this.newName,
-          phone: "",
-          email: "",
         };
         let arr = this.$data.store.contacts;
         arr.splice(index, 1, newContact);
@@ -78,7 +76,7 @@ export default {
   }
   .add-btn {
     width: 100px;
-    height: 50px;
+    height: 40px;
     font-size: 16px;
   }
   input {

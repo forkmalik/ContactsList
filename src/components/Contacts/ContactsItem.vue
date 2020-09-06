@@ -1,7 +1,7 @@
 <template>
   <ol class="contact-list__item">
     <li>
-      <router-link to="/contact-info">
+      <router-link :to="{name: 'contact-info', params: { contact: contact } }">
         <a>{{ contact.name }}</a>
       </router-link>
       <button @click="showModal" class="contact-list__btn">X</button>
