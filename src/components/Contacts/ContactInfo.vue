@@ -1,44 +1,59 @@
 <template>
   <div class="add-field-wrapper">
     <p>Name: {{ contact.name }}</p>
-    <input type="text" placeholder="Example: e-mail" v-model="fieldName" />
-    <input type="text" placeholder="Example: hi@mail.com" v-model="fieldValue" />
+    <select class="drop-down" @change="changeFieldTitle($event)">
+      <option value="" selected disabled>Choose</option>
+      <option v-for="fieldTitle in fieldTitles" :value="fieldTitle.id" :key="fieldTitle.id">{{ fieldTitle.name }}</option>
+    </select>
+    <input type="text" placeholder="Example: hi@mail.com" v-model="fieldValue"/>
     <button class="contact-list__btn add-btn" @click="addField">Add field</button>
-     <p v-for="param in contact" :key="param.id">{{ contact[fieldValue] }}</p>
+    <p v-for="param in contact" :key="param.id">{{ contact[selectedFieldTitle] }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: "contact-info",
+  props: ["contact"],
   data() {
     return {
-      fieldName: "",
       fieldValue: "",
+      fieldTitles: [
+        {id: 0, name: "E-mail"},
+        {id: 1, name: "Phone"},
+        {id: 2, name: "Address"}
+      ],
+      selectedFieldTitle: null
     };
   },
-  props: ["contact"],
   methods: {
+    changeFieldTitle: function(event) {
+      this.selectedFieldTitle = event.target.options[event.target.options.selectedIndex].text
+      console.log(this.selectedFieldTitle)
+    } ,
     addField: function () {
-      if (
-        this.fieldName == "" ||
-        this.fieldName == undefined ||
-        this.fieldValue == "" ||
-        this.fieldValue == undefined
-      ) {
-        alert("Nothing to add");
-      } else {
-        let arr = this.contact;
-        arr[this.fieldName] = this.fieldValue;
+      switch (this.selectedFieldTitle) {
+        case "E-mail":
+          console.log("Added mail")
+          break
+        case "Phone":
+          console.log("Added phone")
+          break
+        case "Address":
+          console.log("Added address")
+          break
       }
-
-      this.newName = "";
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.drop-down {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+}
 .contact-list__btn {
   width: 100px;
   height: 40px;
