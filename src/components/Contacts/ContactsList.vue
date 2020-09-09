@@ -1,6 +1,6 @@
 <template>
   <div class="contact-list">
-    <input type="text" v-model="newName" />
+    <input type="text" v-model="newName" placeholder="Enter the contact name" />
     <button v-on:click="addNewContact" class="contact-list__btn add-btn">Add contact</button>
     <contacts-item
       v-for="contact in store.contacts"
