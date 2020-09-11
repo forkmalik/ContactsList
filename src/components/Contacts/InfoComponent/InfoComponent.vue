@@ -14,7 +14,6 @@ export default {
   props: ["info", "contact"],
   data() {
     return {
-      contact: this.contact,
       contactPropsName: Object.keys(this.contact).find(
         (key) => this.contact[key] === this.info
       ),
@@ -24,11 +23,12 @@ export default {
     removeField: function (contactPropsName) {
       let currentPropsName = this.contactPropsName;
       if (currentPropsName == contactPropsName) {
-        let contactKeys = Object.keys(this.contact);
+        let contactKeys = Object.values(this.contact);
         let index = contactKeys.indexOf(currentPropsName);
         let contactInfoArr = Object.entries(this.contact);
         contactInfoArr.splice(index, 1);
         this.contact = Object.fromEntries(contactInfoArr)
+        console.log(contactInfoArr);
         console.log(this.contact);
       }
     },
